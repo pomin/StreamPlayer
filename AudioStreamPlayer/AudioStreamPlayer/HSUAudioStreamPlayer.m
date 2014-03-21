@@ -109,6 +109,28 @@ AudioFileTypeID hintForFileExtension(NSString *fileExtension);
     }
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(handleInterruption:)
+         name:IPHONE_6_OR_LATER ? AVAudioSessionInterruptionNotification : @"AVAudioSessionInterruptionNotification"
+         object:nil];
+        
+        _audioSessionCategory = AVAudioSessionCategoryPlayback;
+        _dataEnqueueDP = dispatch_queue_create("me.tuoxie.audiostream", NULL);
+        _bufferSize = kMaxBufferSize;
+        
+        pthread_mutex_init(&_bufferMutex, NULL);
+        pthread_cond_init(&_bufferCond, NULL);
+        
+        self.state = HSU_AS_STOPPED;
+    }
+    return self;
+}
+
 - (instancetype)initWithURL:(NSURL *)url
               cacheFilePath:(NSString *)cacheFilePath
 {
@@ -133,6 +155,12 @@ AudioFileTypeID hintForFileExtension(NSString *fileExtension);
         self.state = HSU_AS_STOPPED;
     }
     return self;
+}
+
+- (void)setURL:(NSURL *)url
+{
+    [self stop];
+    _url = url;
 }
 
 // Call on main thread

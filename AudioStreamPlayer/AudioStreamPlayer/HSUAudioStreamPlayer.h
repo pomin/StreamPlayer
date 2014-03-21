@@ -112,6 +112,9 @@ NSString *stateText(HSUAudioStreamPlayBackState state);
 
 @property (nonatomic, assign) NSUInteger dataOffset;
 
+
+- (instancetype)init;
+
 /*!
  * @description
  * initialize player
@@ -147,5 +150,7 @@ NSString *stateText(HSUAudioStreamPlayBackState state);
 - (double)progress;
 - (double)duration;
 - (float)currentVolume;
+
+- (void)setURL:(NSURL *)url;
 
 @end
