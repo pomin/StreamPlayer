@@ -163,6 +163,11 @@ AudioFileTypeID hintForFileExtension(NSString *fileExtension);
     _url = url;
 }
 
+- (void)setCacheFilePath:(NSString *)cacheFilePath
+{
+    _cacheFilePath = [cacheFilePath copy];
+}
+
 // Call on main thread
 - (void)play
 {

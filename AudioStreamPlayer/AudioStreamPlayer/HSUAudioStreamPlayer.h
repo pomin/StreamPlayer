@@ -152,5 +152,6 @@ NSString *stateText(HSUAudioStreamPlayBackState state);
 - (float)currentVolume;
 
 - (void)setURL:(NSURL *)url;
+- (void)setCacheFilePath:(NSString *)cacheFilePath;
 
 @end
