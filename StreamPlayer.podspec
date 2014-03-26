@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/pomin/StreamPlayer.git", :tag => "0.0.1" }
 
-  s.source_files  = 'AudioStreamPlayer', 'AudioStreamPlayer/AudioStreamPlayer/*.{h,m}'
+  s.source_files  = 'AudioStreamPlayer/AudioStreamPlayer/*.{h,m}'
   s.frameworks = 'AudioToolbox', 'AVFoundation', 'CFNetwork', 'XCTest'
   s.requires_arc = true
 
