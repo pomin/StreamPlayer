@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/pomin/StreamPlayer"
-  s.license      = 'MIT (example)'
+  s.license      = 'MIT'
 
   s.author       = { "Jason Hsu" => "support@tuoxie.me" }
 
